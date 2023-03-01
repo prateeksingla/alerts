@@ -26,5 +26,5 @@ jobs:
         path: ${{ env.WORK_DIR }}
     - name: Run main script
       run: |
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -r ${{ env.WORK_DIR }}/requirements.txt
         python ${{ env.WORK_DIR }}/main.py
