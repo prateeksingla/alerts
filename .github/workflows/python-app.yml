@@ -11,16 +11,21 @@ on:
   schedule:
     - cron: "*/5 * * * *"
 
-permissions:
-  contents: read
+env:
+  WORK_DIR: alerts
 
 jobs:
   cron:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Run one line script
-      run: python main.py
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      with:
+        repository: prateeksingla/alerts
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ${{ env.WORK_DIR }}
+    - name: Run main script
+      run: python ${{ env.WORK_DIR }}/main.py
 #     - name: Set up Python 3.10
 #       uses: actions/setup-python@v3
 #       with:
