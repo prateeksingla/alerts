@@ -1,0 +1,4 @@
+gspread
+json
+pushbullet
+ssl
