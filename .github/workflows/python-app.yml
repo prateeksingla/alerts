@@ -19,6 +19,7 @@ env:
 jobs:
   cron:
     runs-on: ubuntu-latest
+    environment: BUILD_ACTION
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
