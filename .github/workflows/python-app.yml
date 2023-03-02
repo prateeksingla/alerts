@@ -1,32 +1,32 @@
-# # This workflow will install Python dependencies, run tests and lint with a single version of Python
-# # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-# name: Run Python application
+name: Run Python application
 
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
-#   schedule:
-#     - cron: "*/5 * * * *"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "*/5 * * * *"
 
-# env:
-#   WORK_DIR: alerts
-#   PB_KEY: ${{ env.PB_KEY }}
-#   GC_CRED: ${{ env.GC_CRED }}
+env:
+  WORK_DIR: alerts
+  PB_KEY: ${{ env.PB_KEY }}
+  GC_CRED: ${{ env.GC_CRED }}
 
-# jobs:
-#   cron:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout Repo
-#       uses: actions/checkout@v2
-#       with:
-#         repository: prateeksingla/alerts
-#         token: ${{ secrets.GITHUB_TOKEN }}
-#         path: ${{ env.WORK_DIR }}
-#     - name: Run main script
-#       run: |
-#         pip install -r ${{ env.WORK_DIR }}/requirements.txt
-#         python ${{ env.WORK_DIR }}/main.py
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      with:
+        repository: prateeksingla/alerts
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ${{ env.WORK_DIR }}
+    - name: Run main script
+      run: |
+        pip install -r ${{ env.WORK_DIR }}/requirements.txt
+        python ${{ env.WORK_DIR }}/main.py
