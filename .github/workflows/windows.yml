@@ -1,0 +1,32 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Run Python application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "*/10 * * * *"
+
+env:
+  WORK_DIR: alerts
+  PB_KEY: ${{ secrets.PB_KEY }}
+  GC_CRED: ${{ secrets.GC_CRED }}
+
+jobs:
+  cron:
+    runs-on: windows-2019
+    environment: BUILD_ACTION
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      with:
+        repository: prateeksingla/alerts
+        token: ${{ secrets.GITHUB_TOKEN }}
+        path: ${{ env.WORK_DIR }}
+    - name: Run main script
+      run: |
+        python ${{ env.WORK_DIR }}/dist/main/main.exe
