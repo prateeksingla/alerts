@@ -13,8 +13,8 @@ on:
 
 env:
   WORK_DIR: alerts
-  PB_KEY: ${{ env.PB_KEY }}
-  GC_CRED: ${{ env.GC_CRED }}
+  PB_KEY: ${{ secrets.PB_KEY }}
+  GC_CRED: ${{ secrets.GC_CRED }}
 
 jobs:
   cron:
