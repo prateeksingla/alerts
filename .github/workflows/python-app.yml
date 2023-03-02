@@ -21,8 +21,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: BUILD_ACTION
     steps:
+    - name: Cache
+      uses: actions/setup-python@v4
+      with:
+        cache: 'pip'
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: prateeksingla/alerts
         token: ${{ secrets.GITHUB_TOKEN }}
