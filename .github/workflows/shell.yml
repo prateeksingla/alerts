@@ -23,4 +23,4 @@ jobs:
       run: |
         current=curl -v --silent https://www.incometax.gov.in/iec/foportal/downloads/income-tax-returns 2>&1 | grep -A 28 "Individuals and" | md5sum
         old="d8a24a3cf92c58b0d2fca03d1559edab"
-        [ ${old} == ${current:0:32} ] && echo "There is no change."
+        if [ ${old} == ${current:0:32} ]; then echo "There is no change."; fi
