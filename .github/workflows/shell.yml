@@ -18,6 +18,6 @@ jobs:
     - name: Run main script
       run: |
         current=curl -v --silent https://www.incometax.gov.in/iec/foportal/downloads/income-tax-returns 2>&1 | grep -A 28 "Individuals and" | md5sum
-        old="d8a24a3cf92c58b0d2fca03d1559eda"
+        old="d8a24a3cf92c58b0d2fca03d1559edab"
         if [ ${old} == ${current:0:32} ]; then echo "There is no change."; fi
 #Number 32 is used becuase the length of original hash is 32 chars.
